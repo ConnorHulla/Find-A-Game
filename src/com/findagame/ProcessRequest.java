@@ -36,21 +36,27 @@ public class ProcessRequest extends HttpServlet {
 	//this function will process the data that the user sent us.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		//get the list of consoles, then the search limit
+		//get the list of consoles & genres, store them in our IGDBReqest class
 		String [] consoleIDs = request.getParameterValues("Console");
+		String [] genreIDs = request.getParameterValues("Genre");
 		int limit = Integer.parseInt(request.getParameter("limit")); //get the limit, convert it to an integer
 		List consoleList = Arrays.asList(consoleIDs);
+		List genreList = Arrays.asList(genreIDs);
 		
 		String url = "/DisplayResults.jsp";  //URL we will go to after we process the data
 		IGDBRequest IGDBReq = new IGDBRequest();
 		
 		//put the data from request into our IGDBRequest object
 		IGDBReq.setPlatformList(consoleList); 
+		IGDBReq.setGenreList(genreList);
 		IGDBReq.setLimit(limit);
+		
+	
 		
 		/*This directs us to the DisplayResults page, and on that page we can display data from
 		  our IGDBReq instance*/
 		request.setAttribute("IGDBReq", IGDBReq);
+		request.setAttribute("genreList", genreList);
 		getServletContext()
 		.getRequestDispatcher(url)    
 		.forward(request, response);

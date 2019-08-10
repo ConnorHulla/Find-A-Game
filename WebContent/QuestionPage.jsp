@@ -33,9 +33,30 @@
   <input type="checkbox" name="Console" value=12> Xbox 360<br>
   <input type="checkbox" name="Console" value=11> Xbox <br>
   
+  <p>What genre are you looking for?</p>
+  <input type="checkbox" name="Genre" value="2"> Point-and-click<br>
+  <input type="checkbox" name="Genre" value="4"> Fighting<br>
+  <input type="checkbox" name="Genre" value="5"> Shooter<br>
+  <input type="checkbox" name="Genre" value="7"> Music<br>
+  <input type="checkbox" name="Genre" value="8"> Platform<br>
+  <input type="checkbox" name="Genre" value="9"> Puzzle<br>
+  <input type="checkbox" name="Genre" value="10"> Racing<br>
+  <input type="checkbox" name="Genre" value="11"> Real Time Strategy (RTS)<br>
+  <input type="checkbox" name="Genre" value="12"> Role-playing (RPG)<br>
+  <input type="checkbox" name="Genre" value="13"> Simulator<br>
+  <input type="checkbox" name="Genre" value="14"> Sport<br>
+  <input type="checkbox" name="Genre" value="15"> Strategy<br>
+  <input type="checkbox" name="Genre" value="16"> Turn-based Strategy<br>
+  <input type="checkbox" name="Genre" value="24"> Tactical<br>
+  <input type="checkbox" name="Genre" value="25"> Hack and slash/Beat 'em up<br>
+  <input type="checkbox" name="Genre" value="26"> Quiz/Trivia<br>
+  <input type="checkbox" name="Genre" value="30"> Pinball<br>
+  <input type="checkbox" name="Genre" value="31"> Adventure<br>
+  <input type="checkbox" name="Genre" value="32"> Indie<br>
+  <input type="checkbox" name="Genre" value="33"> Arcade<br>
+  
   
   <p>How many games do you want?</p>
-  
   <input type="text" name="limit"><br>
   <input type="submit" value="Send">
  

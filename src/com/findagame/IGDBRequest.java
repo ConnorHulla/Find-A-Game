@@ -27,17 +27,19 @@ public class IGDBRequest
     }
 
 
+    //setters for our lists
     public void setPlatformList(List<String> platList) { Platforms = platList; }
-    
-
+    public void setGenreList(List<String> genreList)   { Genres = genreList;   }
+    //getters for our lists
+    public List<String> getGenreList() { return Genres; }
     public String getKey() { return key; }
-
     public void setLimit(int l) { limit = l; }
     public int getLimit() { return limit; }
 
     public String getRequest()
     {
         boolean hasGenres = false, hasPlatforms = false, hasLimits = false;
+        //fields we filter by in our query
         String fields = "fields name,platforms,genres,genres.name,url,themes.name,platforms.name,summary;";
         String where = "where", addLimit = "";
 
