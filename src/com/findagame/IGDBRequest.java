@@ -68,7 +68,7 @@ public class IGDBRequest
                 where += " &";
 
             where += " platforms = (";
-            //the platform IDS will go inbetween [] brackets
+            //the platform IDs will go inbetween [] brackets
             for(int i = 0; i < Platforms.size() -1; i++)
             {
                 where += Platforms.get(i) + ",";

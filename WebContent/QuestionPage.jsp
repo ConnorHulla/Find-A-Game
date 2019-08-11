@@ -7,11 +7,14 @@
 <title>Find-A-Game</title>
 </head>
 <body>
+<!-- This is the page the user starts on. The user will answer the questions and the information is sent
+to the ProcessRequest.java servlet. -->
 <h1>Answer the questions below and we'll find you some games to play</h1>
 
 
 <p>What consoles do you play on?</p>
-<form action="ProcessRequest" method="post">
+<!--  the action tells us which servlet to go to, and the method tells us to use post --> 
+<form action="ProcessRequest" method="post">  
   <input type="checkbox" name="Console" value=6> PC<br>
   <input type="checkbox" name="Console" value=3> Linux<br>
   <input type="checkbox" name="Console" value=14> Mac<br>

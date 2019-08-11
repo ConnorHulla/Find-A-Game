@@ -10,14 +10,14 @@
 <body> 
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
-	<h3>Inputs:</h3>
-	
-	<label>Limit: </label>
-	${IGDBReq.limit}<br>
-	<label>Genres: </label>
-	
-	<c:forEach items="${genreList}" var="item">
-	    ${item}<br>
+	<h3>Games Found: </h3>
+	<ul>  <!-- Prints a list of all the games that were returned from the IGDB API. -->
+	<c:forEach begin="0" end ="${gameList.length() - 1}" var="index">
+		<li>
+		${gameList.getJSONObject(index).getString("name")}<br>
+		${gameList.getJSONObject(index).getString("summary")}<br>
+		</li>
 	</c:forEach>
+	</ul>
 </body>
 </html>
