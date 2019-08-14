@@ -46,7 +46,7 @@ public class IGDBRequest
         //adds genres to our query if we have Genres in our list
         if(Genres.size() > 0)
         {
-            where += " genres = (";
+            where += " genres = [";
             //adds every genre in our genre list to the string
             for(int i = 0; i < Genres.size() -1; i++)
             {
@@ -54,7 +54,7 @@ public class IGDBRequest
             }
             //we didn't concatenate the last because the last element doesnt have a comma at the end
             //so concatenate the last element
-            where += Genres.get(Genres.size() - 1) + ")";
+            where += Genres.get(Genres.size() - 1) + "]";
             hasGenres = true;
         }
 

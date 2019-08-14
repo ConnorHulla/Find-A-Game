@@ -59,7 +59,7 @@ public class ProcessRequest extends HttpServlet {
 		String url = "/DisplayResults.jsp";  //URL we will go to after we process the data
         /*instantiate an IGDBReq file, the API request is made inside this object, pass they key through the
 		constructor*/
-		IGDBRequest IGDBReq = new IGDBRequest(""); 
+		IGDBRequest IGDBReq = new IGDBRequest("3c4401d99c09c364bdd4df6bc61a3d14"); 
 		
 		//put the data from request into the IGDBRequest object
 		IGDBReq.setPlatformList(consoleList); 

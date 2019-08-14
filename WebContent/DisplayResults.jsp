@@ -16,6 +16,7 @@
 		<li>
 		${gameList.getJSONObject(index).getString("name")}<br>
 		${gameList.getJSONObject(index).getString("summary")}<br>
+		<a href="${gameList.getJSONObject(index).getString("url")}">Link To Game</a>
 		</li>
 	</c:forEach>
 	</ul>
