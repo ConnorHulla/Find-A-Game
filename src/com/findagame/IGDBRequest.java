@@ -5,7 +5,7 @@ import java.util.List;
 
 public class IGDBRequest 
 {
-	private List<String> Genres, Platforms, Publishers,Characters, GameModes, Themes;
+	private List<String> Genres, Platforms, GameModes, Themes;
     private int start_date, end_date; 
     private String key;
     private int limit;
@@ -20,8 +20,6 @@ public class IGDBRequest
     {
         Genres = new LinkedList<String>();
         Platforms = new LinkedList<String>();
-        Publishers = new LinkedList<String>();
-        Characters = new LinkedList<String>();
         GameModes = new LinkedList<String>();
         Themes = new LinkedList<String>();
     }
@@ -30,6 +28,8 @@ public class IGDBRequest
     //setters for our lists
     public void setPlatformList(List<String> platList) { Platforms = platList; }
     public void setGenreList(List<String> genreList)   { Genres = genreList;   }
+    public void setGameModeList(List<String> gameModeList) { GameModes = gameModeList; }
+    public void setThemeList(List<String> themeList) { Themes = themeList; }
     //getters for our lists
     public List<String> getGenreList() { return Genres; }
     public String getKey() { return key; }
@@ -38,9 +38,9 @@ public class IGDBRequest
 
     public String getRequest()
     {
-        boolean hasGenres = false, hasPlatforms = false, hasLimits = false;
+        boolean hasElement = false, hasLimits = false;
         //fields we filter by in our query
-        String fields = "fields name,platforms,genres,genres.name,url,themes.name,platforms.name,summary;";
+        String fields = "fields name,platforms,genres,genres.name,url,themes.name,platforms.name,summary,game_modes;";
         String where = "where", addLimit = "";
 
         //adds genres to our query if we have Genres in our list
@@ -55,7 +55,7 @@ public class IGDBRequest
             //we didn't concatenate the last because the last element doesnt have a comma at the end
             //so concatenate the last element
             where += Genres.get(Genres.size() - 1) + "]";
-            hasGenres = true;
+            hasElement = true;
         }
 
         //build the 'where' string that has our filters
@@ -64,11 +64,11 @@ public class IGDBRequest
         {
 
             //if we have genres, add the & symbol to our string. Otherwise, we dont need it
-            if(hasGenres)
+            if(hasElement)
                 where += " &";
 
             where += " platforms = (";
-            //the platform IDs will go inbetween [] brackets
+            //the platform IDs go between the () 
             for(int i = 0; i < Platforms.size() -1; i++)
             {
                 where += Platforms.get(i) + ",";
@@ -76,8 +76,26 @@ public class IGDBRequest
             //the last item in our list is a special case
             //so instead of adding the , we add a )
             where += Platforms.get(Platforms.size() - 1) + ")";
+            hasElement = true;
         }
 
+        if(GameModes.size() > 0)
+        {
+            //if we have already put a filter on, add the & sign to the string
+            if(hasElement)
+                where += " &";
+
+            where += " game_modes = (";
+            //the GameMode IDS will go inbetween () parenthesise
+            for(int i = 0; i < GameModes.size() -1; i++)
+            {
+                where += GameModes.get(i) + ",";
+            }
+            //the last item in our list is a special case
+            //so instead of adding the , we add a )
+            where += GameModes.get(GameModes.size() - 1) + ")";
+            hasElement = true;
+        }
 
         //build the limit string, tells us how many results to display
         if(limit > 0)
@@ -101,10 +119,6 @@ public class IGDBRequest
     public void removeGenre(String rem)       { Genres.remove(rem);     }
     public void addPlatform(String add)       { Platforms.add(add);     }
     public void removePlatform(String rem)    { Platforms.remove(rem);  }
-    public void addPublisher(String add)      { Publishers.add(add);    }
-    public void removePublisher(String rem)   { Publishers.remove(rem); }
-    public void addCharacters(String add)     { Characters.add(add);    }
-    public void removeCharacters(String rem)  { Characters.remove(rem); }
     public void addGameMode(String add)       { GameModes.add(add);     }
     public void removeGameMode(String rem)    { GameModes.remove(rem);  }
     public void addTheme(String add)          { Themes.add(add);        }

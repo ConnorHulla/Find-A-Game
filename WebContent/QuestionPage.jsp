@@ -59,6 +59,14 @@ to the ProcessRequest.java servlet. -->
   <input type="checkbox" name="Genre" value="33"> Arcade<br>
   
   
+  <p>What game-modes are you looking for?</p>
+  <input type="checkbox" name="GameMode" value="1"> Single Player<br>
+  <input type="checkbox" name="GameMode" value="2"> Multiplayer<br>
+  <input type="checkbox" name="GameMode" value="3"> Co-operative<br>
+  <input type="checkbox" name="GameMode" value="4"> Split-Screen<br>  
+  <input type="checkbox" name="GameMode" value="5"> Massively Multiplayer Online (MMO)<br> 
+  
+  
   <p>How many games do you want?</p>
   <input type="text" name="limit"><br>
   <input type="submit" value="Send">

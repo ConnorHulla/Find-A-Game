@@ -30,9 +30,7 @@ import java.util.Scanner;
 public class ProcessRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	
     public ProcessRequest() {
         super();
         // TODO Auto-generated constructor stub
@@ -52,9 +50,11 @@ public class ProcessRequest extends HttpServlet {
 		//get the list of consoles & genres, store them in our IGDBReqest class
 		String [] consoleIDs = request.getParameterValues("Console");
 		String [] genreIDs = request.getParameterValues("Genre");
+		String [] gameModeIDs = request.getParameterValues("GameMode");
 		int limit = Integer.parseInt(request.getParameter("limit")); //get the limit, convert it to an integer
-		List consoleList = Arrays.asList(consoleIDs);
-		List genreList = Arrays.asList(genreIDs);
+		List<String> consoleList = Arrays.asList(consoleIDs);
+		List<String> genreList = Arrays.asList(genreIDs);
+		List<String> gameModeList = Arrays.asList(gameModeIDs);
 		
 		String url = "/DisplayResults.jsp";  //URL we will go to after we process the data
         /*instantiate an IGDBReq file, the API request is made inside this object, pass they key through the
@@ -65,6 +65,7 @@ public class ProcessRequest extends HttpServlet {
 		IGDBReq.setPlatformList(consoleList); 
 		IGDBReq.setGenreList(genreList);
 		IGDBReq.setLimit(limit);
+		IGDBReq.setGameModeList(gameModeList);
 		
 		//make post request to IGDB to get a list of games
 
