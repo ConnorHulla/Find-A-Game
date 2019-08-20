@@ -40,7 +40,7 @@ public class IGDBRequest
     {
         boolean hasElement = false, hasLimits = false;
         //fields we filter by in our query
-        String fields = "fields name,platforms,genres,genres.name,url,themes.name,platforms.name,summary,game_modes;";
+        String fields = "fields name,url,platforms,genres,screenshots.image_id,themes,summary;";        
         String where = "where", addLimit = "";
 
         //adds genres to our query if we have Genres in our list
