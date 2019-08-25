@@ -3,6 +3,7 @@ package com.findagame;
 import java.util.LinkedList;
 import java.util.List;
 
+
 public class IGDBRequest 
 {
 	private List<String> Genres, Platforms, GameModes, Themes;

@@ -36,6 +36,9 @@ to the ProcessRequest.java servlet. -->
 	  <input type="checkbox" name="Console" value=49> Xbox One<br>
 	  <input type="checkbox" name="Console" value=12> Xbox 360<br>
 	  <input type="checkbox" name="Console" value=11> Xbox <br>
+	  
+	  <input type="checkbox" name="Console" value=23> Dreamcast <br>
+	  
   </fieldset>
   
   

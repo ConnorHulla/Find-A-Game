@@ -59,7 +59,7 @@ public class ProcessRequest extends HttpServlet {
 		String url = "/DisplayResults.jsp";  //URL we will go to after we process the data
         /*instantiate an IGDBReq file, the API request is made inside this object, pass they key through the
 		constructor*/
-		IGDBRequest IGDBReq = new IGDBRequest(""); 
+		IGDBRequest IGDBReq = new IGDBRequest("37ad0f511514726398ebb90ee401646e"); 
 		
 		//put the data from request into the IGDBRequest object
 		IGDBReq.setPlatformList(consoleList); 
@@ -83,11 +83,13 @@ public class ProcessRequest extends HttpServlet {
         /*our jsonResponse returned a list of games in JSON format, so we will iterate through them
         in the display results page. */
         JSONArray gameList = jsonResponse.getBody().getArray();
-		
-		
+		String summary = "summary";
+		String screenshots = "screenshots";
 		/*This directs us to the DisplayResults page, and on that page we can display data from
 		  our IGDBReq instance*/
 		request.setAttribute("gameList", gameList);
+		request.setAttribute("summary", summary);
+		request.setAttribute("screenshots", screenshots);
 		getServletContext()
 		.getRequestDispatcher(url)    
 		.forward(request, response);
