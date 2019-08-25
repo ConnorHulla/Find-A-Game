@@ -19,6 +19,11 @@ to the ProcessRequest.java servlet. -->
 	  <input type="checkbox" name="Console" value=6> PC<br>
 	  <input type="checkbox" name="Console" value=3> Linux<br>
 	  <input type="checkbox" name="Console" value=14> Mac<br>
+	  <input type="checkbox" name="Console" value=39> iOS <br>
+	  <input type="checkbox" name="Console" value=34> Android <br>
+	  
+	 
+	  
 	  
 	  <input type="checkbox" name="Console" value=130> Nintendo Switch<br>
 	  <input type="checkbox" name="Console" value=41> Wii U<br>
@@ -33,12 +38,19 @@ to the ProcessRequest.java servlet. -->
 	  <input type="checkbox" name="Console" value=8> Playstation 2<br>
 	  <input type="checkbox" name="Console" value=7> Playstation 1<br>
 	  
+	  
 	  <input type="checkbox" name="Console" value=49> Xbox One<br>
 	  <input type="checkbox" name="Console" value=12> Xbox 360<br>
 	  <input type="checkbox" name="Console" value=11> Xbox <br>
 	  
 	  <input type="checkbox" name="Console" value=23> Dreamcast <br>
+	  <input type="checkbox" name="Console" value=32> Sega Saturn <br>
+	  <input type="checkbox" name="Console" value=30> Sega 32X <br>
+	  <input type="checkbox" name="Console" value=78> Sega CD <br>
+	  <input type="checkbox" name="Console" value=29> Sega Mega Drive/Genesis <br>
+	  <input type="checkbox" name="Console" value=64> Sega Master System<br>
 	  
+	  	  
   </fieldset>
   
   
