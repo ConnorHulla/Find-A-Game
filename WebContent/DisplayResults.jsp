@@ -37,7 +37,7 @@
 		        <a href="${gameList.getJSONObject(index).getString("url")}">
 		        <c:choose>
 		        	<c:when test="${gameList.getJSONObject(index).has(screenshots)}">
-					<img src="https://images.igdb.com/igdb/image/upload/t_cover_big/${gameList.getJSONObject(index).getJSONArray("screenshots").getJSONObject(0).getString("image_id")}.jpeg"
+					<img src="https://images.igdb.com/igdb/image/upload/t_screenshot_med/${gameList.getJSONObject(index).getJSONArray("screenshots").getJSONObject(0).getString("image_id")}.jpeg"
 					alt="GamePic" style = "width:100%">
 			   		</c:when>
 			   		

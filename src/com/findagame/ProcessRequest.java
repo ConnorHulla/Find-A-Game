@@ -47,26 +47,37 @@ public class ProcessRequest extends HttpServlet {
 	//this function will process the data that the user sent us.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		//get the list of consoles & genres, store them in our IGDBReqest class
-		String [] consoleIDs = request.getParameterValues("Console");
-		String [] genreIDs = request.getParameterValues("Genre");
-		String [] gameModeIDs = request.getParameterValues("GameMode");
-		int limit = Integer.parseInt(request.getParameter("limit")); //get the limit, convert it to an integer
-		List<String> consoleList = Arrays.asList(consoleIDs);
-		List<String> genreList = Arrays.asList(genreIDs);
-		List<String> gameModeList = Arrays.asList(gameModeIDs);
-		
-		String url = "/DisplayResults.jsp";  //URL we will go to after we process the data
+		String APIKey = "";
         /*instantiate an IGDBReq file, the API request is made inside this object, pass they key through the
 		constructor*/
-		IGDBRequest IGDBReq = new IGDBRequest("37ad0f511514726398ebb90ee401646e"); 
+		IGDBRequest IGDBReq = new IGDBRequest(APIKey); 
 		
+		//get the list of consoles & genres, store them in our IGDBReqest class
+		String [] consoleIDs, genreIDs, gameModeIDs;
+		int limit;
+		//if its null, then the user left that field empty, so we want to ignore it.
+		if(request.getParameter("Console") != null)
+		{
+			consoleIDs = request.getParameterValues("Console");
+			IGDBReq.setPlatformList(consoleIDs); 
+		}
+		if(request.getParameter("Genre") != null)
+		{
+			genreIDs = request.getParameterValues("Genre");
+			IGDBReq.setGenreList(genreIDs);
+		}
+		if(request.getParameter("gameModeIDs") != null)
+		{
+			gameModeIDs = request.getParameterValues("GameMode");
+			IGDBReq.setGameModeList(gameModeIDs);
+		}
+		
+		limit = Integer.parseInt(request.getParameter("limit")); //get the limit, convert it to an integer
 		//put the data from request into the IGDBRequest object
-		IGDBReq.setPlatformList(consoleList); 
-		IGDBReq.setGenreList(genreList);
 		IGDBReq.setLimit(limit);
-		IGDBReq.setGameModeList(gameModeList);
 		
+		String url = "/DisplayResults.jsp";  //URL we will go to after we process the data
+
 		//make post request to IGDB to get a list of games
 
         HttpResponse<JsonNode> jsonResponse = null;
