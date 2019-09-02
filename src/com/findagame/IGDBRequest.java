@@ -6,7 +6,7 @@ public class IGDBRequest
 	String [] Genres, Platforms, GameModes, Themes;
     private int start_date, end_date; 
     private String key;
-    private int limit;
+    private int limit, min_rating;
 
     public IGDBRequest(String k)
     {
@@ -16,7 +16,7 @@ public class IGDBRequest
 
     public IGDBRequest()
     {
-    	
+    	min_rating = 65;
     }
 
 
@@ -33,13 +33,35 @@ public class IGDBRequest
 
     public String getRequest()
     {
-        boolean hasElement = false, hasLimits = false;
+    	boolean hasLimits = false;
         //fields we filter by in our query
         String fields = "fields name,url,platforms,genres,screenshots.image_id,themes,summary;";        
-        String where = "where", addLimit = "";
+        String addLimit = "";
+        //function that builds the where part of our request, which is responsible for filtering
+        String where = buildWhere();
 
-        //adds genres to our query if we have Genres in our list
-        if(Genres != null)
+        //build the limit string, tells us how many results to display
+        if(limit > 0)
+        {
+            addLimit += "limit " + limit + ";";
+            hasLimits = true;
+        }
+
+        String fullRequest = fields;
+        if(where.length() > 5)
+            fullRequest += " " + (where + ";");
+        if(hasLimits)
+            fullRequest += " " + addLimit;
+
+        return fullRequest;
+    }
+    
+    private String buildWhere()
+    {
+    	boolean hasElement = false;
+    	String where = "where";
+    	
+    	if(Genres != null)
         {
             where += " genres = [";
             //adds every genre in our genre list to the string
@@ -91,21 +113,29 @@ public class IGDBRequest
             where += GameModes[GameModes.length - 1] + ")";
             hasElement = true;
         }
-
-        //build the limit string, tells us how many results to display
-        if(limit > 0)
+        
+        if(Themes != null)
         {
-            addLimit += "limit " + limit + ";";
-            hasLimits = true;
+            //if we have already put a filter on, add the & sign to the string
+            if(hasElement)
+                where += " &";
+
+            where += " themes = [";
+            //the themes will go inbetween [] brackets
+            for(int i = 0; i < Themes.length -1; i++)
+            {
+                where += Themes[i] + ",";
+            }
+            //the last item in our list is a special case
+            //so instead of adding the , we add a )
+            where += Themes[Themes.length - 1] + ")";
+            hasElement = true;
         }
-
-        String fullRequest = fields;
-        if(where.length() > 5)
-            fullRequest += " " + (where + ";");
-        if(hasLimits)
-            fullRequest += " " + addLimit;
-
-        return fullRequest;
+        
+        if(hasElement)
+        	where += " & rating >= " + min_rating;
+    	
+    	return where;
     }
     
 }

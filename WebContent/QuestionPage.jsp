@@ -22,9 +22,6 @@ to the ProcessRequest.java servlet. -->
 	  <input type="checkbox" name="Console" value=39> iOS <br>
 	  <input type="checkbox" name="Console" value=34> Android <br>
 	  
-	 
-	  
-	  
 	  <input type="checkbox" name="Console" value=130> Nintendo Switch<br>
 	  <input type="checkbox" name="Console" value=41> Wii U<br>
 	  <input type="checkbox" name="Console" value=5> Wii<br>
@@ -37,7 +34,6 @@ to the ProcessRequest.java servlet. -->
 	  <input type="checkbox" name="Console" value=9> Playstation 3<br>
 	  <input type="checkbox" name="Console" value=8> Playstation 2<br>
 	  <input type="checkbox" name="Console" value=7> Playstation 1<br>
-	  
 	  
 	  <input type="checkbox" name="Console" value=49> Xbox One<br>
 	  <input type="checkbox" name="Console" value=12> Xbox 360<br>
@@ -78,6 +74,18 @@ to the ProcessRequest.java servlet. -->
 	<input type="checkbox" name="Genre" value="33"> Arcade<br>
   </fieldset>
   
+  <fieldset>
+  	<legend>Select a theme: </legend>
+  	<input type="checkbox" name="Theme" value="38"> Open World <br>
+  	<input type="checkbox" name="Theme" value="19"> Horror <br>
+  	<input type="checkbox" name="Theme" value="32"> Non-Fiction<br>
+  	<input type="checkbox" name="Theme" value="1">  Action<br>
+  	<input type="checkbox" name="Theme" value="18"> Science Fiction<br>
+  	<input type="checkbox" name="Theme" value="23"> Stealth<br>
+  	<input type="checkbox" name="Theme" value="41"> 4X (Explore, Expand, Exploit, and Exterminate)<br>
+  	<input type="checkbox" name="Theme" value="31"> Drama<br>
+  	<input type="checkbox" name="Theme" value="22"> Historical<br>
+  </fieldset>
   
   <fieldset>
   	<legend>What game-modes are you looking for?</legend>

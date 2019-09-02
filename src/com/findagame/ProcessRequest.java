@@ -52,9 +52,10 @@ public class ProcessRequest extends HttpServlet {
 		constructor*/
 		IGDBRequest IGDBReq = new IGDBRequest(APIKey); 
 		
-		//get the list of consoles & genres, store them in our IGDBReqest class
-		String [] consoleIDs, genreIDs, gameModeIDs;
+		//get the list of consoles & genres, store them in our IGDBReqe st class
+		String [] consoleIDs, genreIDs, gameModeIDs, themeIDs;
 		int limit;
+		
 		//if its null, then the user left that field empty, so we want to ignore it.
 		if(request.getParameter("Console") != null)
 		{
@@ -70,6 +71,11 @@ public class ProcessRequest extends HttpServlet {
 		{
 			gameModeIDs = request.getParameterValues("GameMode");
 			IGDBReq.setGameModeList(gameModeIDs);
+		}
+		if(request.getParameter("Themes") != null)
+		{
+			themeIDs = request.getParameterValues("Themes");
+			IGDBReq.setThemeList(themeIDs);
 		}
 		
 		limit = Integer.parseInt(request.getParameter("limit")); //get the limit, convert it to an integer
